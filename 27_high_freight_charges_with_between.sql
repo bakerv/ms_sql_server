@@ -1,0 +1,14 @@
+SELECT COUNT(*)
+FROM Orders
+WHERE YEAR(OrderDate) = '2015'
+
+SELECT COUNT(*)
+FROM Orders
+WHERE OrderDate BETWEEN '20150101' AND CONVERT(datetime,'2015-12-31 23:59:59:998')
+
+SELECT *
+FROM Orders
+WHERE YEAR(OrderDate) = '2015'
+AND OrderID NOT IN (SELECT OrderID
+                    FROM Orders
+					WHERE OrderDate BETWEEN '20150101' AND '20151231')
